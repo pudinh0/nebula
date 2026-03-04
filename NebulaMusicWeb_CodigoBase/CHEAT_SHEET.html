@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Master Cheat Sheet - 100 Propiedades</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* Slate 900 */
+            color: #e2e8f0; /* Slate 200 */
+        }
+        .code-font {
+            font-family: 'Fira Code', monospace;
+        }
+        .prop-name {
+            color: #38bdf8; /* Sky 400 */
+            font-weight: 600;
+        }
+        .prop-value {
+            color: #f472b6; /* Pink 400 */
+        }
+        .card {
+            background-color: #1e293b; /* Slate 800 */
+            border: 1px solid #334155;
+            break-inside: avoid;
+        }
+        /* Masonry-like layout for columns */
+        .masonry-grid {
+            column-count: 1;
+        }
+        @media (min-width: 768px) {
+            .masonry-grid { column-count: 2; }
+        }
+        @media (min-width: 1280px) {
+            .masonry-grid { column-count: 3; }
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #475569; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #64748b; }
+
+        .section-title {
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8 min-h-screen">
+
+    <!-- Header -->
+    <header class="text-center mb-8 pb-6 border-b border-slate-700">
+        <h1 class="text-4xl md:text-5xl font-black mb-2 section-title">CSS MASTER CHEAT SHEET</h1>
+        <p class="text-slate-400 text-lg">Guía de referencia rápida: Propiedades, Valores y Mejores Prácticas</p>
+    </header>
+
+    <!-- Grid Container -->
+    <div class="masonry-grid gap-6 space-y-6">
+
+        <!-- BOX MODEL -->
+        <div class="card rounded-xl p-5 mb-6">
+            <h2 class="text-xl font-bold text-white mb-4 border-b border-slate-600 pb-2 flex items-center">
+                <span class="bg-blue-500 w-3 h-3 rounded-full mr-2"></span> Modelo de Caja (Box Model)
+            </h2>
+            <div class="space-y-3 text-sm">
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">width / height</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Ancho y alto del elemento (px, %, rem, vw).</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">padding</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Espacio interno. <span class="prop-value">10px 20px</span> (vertical horizontal).</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">margin</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Espacio externo. <span class="prop-value">0 auto</span> centra horizontalmente.</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">border</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Borde. <span class="prop-value">1px solid #ccc</span>.</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">box-sizing</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400"><span class="prop-value">border-box</span> (CRUCIAL): Incluye padding/border en el ancho total.</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">min/max-width</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Límites de tamaño. <span class="prop-value">100%</span> evita desbordes.</div>
+                </div>
+                 <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">overflow</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Controla contenido sobrante: <span class="prop-value">hidden, scroll, auto</span>.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FLEXBOX -->
+        <div class="card rounded-xl p-5 mb-6">
+            <h2 class="text-xl font-bold text-white mb-4 border-b border-slate-600 pb-2 flex items-center">
+                <span class="bg-purple-500 w-3 h-3 rounded-full mr-2"></span> Flexbox (Layout 1D)
+            </h2>
+            <div class="space-y-3 text-sm">
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">display: flex</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Activa el contexto flex.</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">flex-direction</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Eje principal: <span class="prop-value">row, column, row-reverse</span>.</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">justify-content</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Alineación eje principal: <span class="prop-value">center, space-between, flex-end</span>.</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">align-items</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Alineación eje cruzado: <span class="prop-value">center, stretch, baseline</span>.</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">flex-wrap</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Permite saltar línea: <span class="prop-value">wrap, nowrap</span>.</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">gap</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Espacio entre elementos: <span class="prop-value">1rem</span>.</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">flex-grow</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Factor de crecimiento del hijo. <span class="prop-value">1</span> ocupa espacio disp.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TYPOGRAPHY -->
+        <div class="card rounded-xl p-5 mb-6">
+            <h2 class="text-xl font-bold text-white mb-4 border-b border-slate-600 pb-2 flex items-center">
+                <span class="bg-yellow-500 w-3 h-3 rounded-full mr-2"></span> Tipografía
+            </h2>
+            <div class="space-y-3 text-sm">
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">font-family</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Fuente. <span class="prop-value">'Roboto', sans-serif</span>.</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">font-size</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Tamaño. Usar <span class="prop-value">rem</span> para accesibilidad.</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">font-weight</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Grosor: <span class="prop-value">400 (normal), 700 (bold)</span>.</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">line-height</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Altura de línea. <span class="prop-value">1.5</span> (sin unidad es mejor).</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">text-align</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Alineación: <span class="prop-value">left, center, right, justify</span>.</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">text-transform</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Casing: <span class="prop-value">uppercase, lowercase, capitalize</span>.</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">letter-spacing</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Espacio entre letras (tracking).</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">text-decoration</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400"><span class="prop-value">none</span> (quita subrayado), <span class="prop-value">underline</span>.</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">white-space</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Control saltos: <span class="prop-value">nowrap</span> evita salto de línea.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GRID -->
+        <div class="card rounded-xl p-5 mb-6">
+            <h2 class="text-xl font-bold text-white mb-4 border-b border-slate-600 pb-2 flex items-center">
+                <span class="bg-green-500 w-3 h-3 rounded-full mr-2"></span> CSS Grid (Layout 2D)
+            </h2>
+            <div class="space-y-3 text-sm">
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">display: grid</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Activa Grid.</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">grid-template-columns</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Define columnas: <span class="prop-value">1fr 1fr 1fr</span> o <span class="prop-value">repeat(3, 1fr)</span>.</div>
+                </div>
+                 <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">grid-template-rows</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Define filas explícitas.</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">grid-column</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Expansión de un hijo: <span class="prop-value">1 / -1</span> (todo el ancho).</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">place-items</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Atajo para centrar (align + justify): <span class="prop-value">center</span>.</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">grid-auto-flow</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Dirección flujo auto: <span class="prop-value">dense</span> rellena huecos.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- POSICIONAMIENTO -->
+        <div class="card rounded-xl p-5 mb-6">
+            <h2 class="text-xl font-bold text-white mb-4 border-b border-slate-600 pb-2 flex items-center">
+                <span class="bg-red-500 w-3 h-3 rounded-full mr-2"></span> Posicionamiento
+            </h2>
+             <div class="space-y-3 text-sm">
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">position: static</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Default. No acepta top/left/z-index.</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">position: relative</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Relativo a sí mismo. Crea contexto para hijos absolutos.</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">position: absolute</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Fuera del flujo. Relativo al padre posicionado más cercano.</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">position: fixed</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Relativo a la ventana (viewport). Se queda al hacer scroll.</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">position: sticky</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Se pega al llegar a un umbral de scroll.</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">z-index</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Orden de apilamiento. Requiere posición no estática.</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">top / bottom / left / right</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Coordenadas de posición.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BACKGROUNDS & BORDERS -->
+        <div class="card rounded-xl p-5 mb-6">
+            <h2 class="text-xl font-bold text-white mb-4 border-b border-slate-600 pb-2 flex items-center">
+                <span class="bg-indigo-500 w-3 h-3 rounded-full mr-2"></span> Fondos y Bordes
+            </h2>
+            <div class="space-y-3 text-sm">
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">background-color</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Color sólido (#hex, rgb, hsl).</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">background-image</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400"><span class="prop-value">url('img.jpg')</span> o <span class="prop-value">linear-gradient(...)</span>.</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">background-size</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400"><span class="prop-value">cover</span> (llena sin deformar), <span class="prop-value">contain</span> (muestra todo).</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">background-position</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Alineación imagen: <span class="prop-value">center center</span>.</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">border-radius</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Redondeo. <span class="prop-value">50%</span> crea círculo.</div>
+                </div>
+                 <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">box-shadow</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Sombra: <span class="prop-value">x y blur spread color</span>.</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">opacity</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Transparencia: 0 a 1. Afecta a hijos.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EFECTOS & ANIMACIÓN -->
+        <div class="card rounded-xl p-5 mb-6">
+            <h2 class="text-xl font-bold text-white mb-4 border-b border-slate-600 pb-2 flex items-center">
+                <span class="bg-pink-500 w-3 h-3 rounded-full mr-2"></span> Efectos y Animación
+            </h2>
+            <div class="space-y-3 text-sm">
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">transition</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Suaviza cambios: <span class="prop-value">all 0.3s ease-in-out</span>.</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">transform</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Modifica forma: <span class="prop-value">scale(), rotate(), translate()</span>.</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">animation</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Aplica @keyframes: <span class="prop-value">nombre 2s infinite</span>.</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">filter</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Filtros visuales: <span class="prop-value">blur(5px), grayscale(100%)</span>.</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">cursor</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Puntero ratón: <span class="prop-value">pointer, not-allowed, grab</span>.</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">pointer-events</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400"><span class="prop-value">none</span> hace que el click "atraviese" el elemento.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VARIABLES & RECOMENDACIONES -->
+        <div class="card rounded-xl p-5 mb-6 border-l-4 border-yellow-400">
+            <h2 class="text-xl font-bold text-white mb-4 border-b border-slate-600 pb-2 flex items-center">
+                <span class="bg-yellow-400 w-3 h-3 rounded-full mr-2"></span> Variables & Trucos
+            </h2>
+            <div class="space-y-3 text-sm">
+                 <div class="mb-3">
+                    <p class="code-font prop-name mb-1">Declarar Variable:</p>
+                    <code class="block bg-slate-900 p-2 rounded text-xs text-slate-300">
+                        :root { --main-color: #ff0000; }
+                    </code>
+                </div>
+                <div class="mb-3">
+                    <p class="code-font prop-name mb-1">Usar Variable:</p>
+                    <code class="block bg-slate-900 p-2 rounded text-xs text-slate-300">
+                        color: var(--main-color);
+                    </code>
+                </div>
+                
+                <div class="mt-4 pt-4 border-t border-slate-700">
+                    <h3 class="font-bold text-yellow-400 mb-2">Recomendaciones Pro:</h3>
+                    <ul class="list-disc list-inside text-slate-400 space-y-1">
+                        <li>Usa <span class="prop-value">rem</span> para fuentes y márgenes (accesibilidad).</li>
+                        <li>Evita <span class="prop-value">!important</span> siempre que puedas.</li>
+                        <li>Prefiere <span class="prop-value">Flexbox</span> para 1D y <span class="prop-value">Grid</span> para 2D.</li>
+                        <li>Resetea estilos básicos al inicio (box-sizing: border-box).</li>
+                        <li>Usa nombres de clase semánticos (BEM o Utility classes).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+         <!-- PSEUDO-CLASES -->
+        <div class="card rounded-xl p-5 mb-6">
+            <h2 class="text-xl font-bold text-white mb-4 border-b border-slate-600 pb-2 flex items-center">
+                <span class="bg-teal-500 w-3 h-3 rounded-full mr-2"></span> Pseudo-clases útiles
+            </h2>
+            <div class="space-y-3 text-sm">
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">:hover</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Al pasar el ratón por encima.</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">:focus</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Al seleccionar (inputs, botones).</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">:nth-child(n)</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Selecciona el hijo número N (o even/odd).</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">:not(.clase)</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Excluye elementos.</div>
+                </div>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 md:col-span-5 code-font prop-name">::before / ::after</div>
+                    <div class="col-span-12 md:col-span-7 text-slate-400">Pseudo-elementos para insertar contenido cosmético.</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="text-center mt-10 pt-6 border-t border-slate-800 text-slate-500 text-sm">
+        <p>Generado por IA • Diseño Optimizado para Desarrolladores</p>
+    </footer>
+
+</body>
+</html>
